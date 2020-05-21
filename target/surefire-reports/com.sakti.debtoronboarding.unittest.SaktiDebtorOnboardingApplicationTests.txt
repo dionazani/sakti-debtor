@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.sakti.debtoronboarding.unittest.SaktiDebtorOnboardingApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.288 s <<< FAILURE! - in com.sakti.debtoronboarding.unittest.SaktiDebtorOnboardingApplicationTests
+contextLoads  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.sakti.debtoronboarding.service.personregistration.PersonrRegistrationServiceImpl] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44]
+Caused by: java.lang.NoClassDefFoundError: Lcom/sakti/dao/repository/RoleRepository;
+Caused by: java.lang.ClassNotFoundException: com.sakti.dao.repository.RoleRepository
+
