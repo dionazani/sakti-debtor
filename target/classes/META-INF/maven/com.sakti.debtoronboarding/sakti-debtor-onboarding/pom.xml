@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.6.RELEASE</version>
+		<version>2.2.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sakti.debtoronboarding</groupId>
@@ -21,6 +21,11 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+		    <groupId>com.oracle</groupId>
+		    <artifactId>ojdbc8</artifactId>
+		    <version>12.2.0.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -80,6 +85,11 @@
 		  <version>4.11</version>
 		  <scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.sakti.infrastructure</groupId>
+			<artifactId>sakti-infrastructure</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -95,33 +105,11 @@
 	</dependencyManagement>
 
 	<build>
-		<finalName>sakti-debtor-onboarding-jkt</finalName>
+		<finalName>sakti-debtor-onboarding</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-			  <artifactId>maven-assembly-plugin</artifactId>
-			  <configuration>
-			    <archive>
-			      <manifest>
-			        <mainClass>fully.qualified.MainClass</mainClass>
-			      </manifest>
-			    </archive>
-			    <descriptorRefs>
-			      <descriptorRef>jar-with-dependencies</descriptorRef>
-			    </descriptorRefs>
-			  </configuration>
-			  <executions>
-			    <execution>
-			      <id>make-assembly</id> <!-- this is used for inheritance merges -->
-			      <phase>package</phase> <!-- bind to the packaging phase -->
-			      <goals>
-			        <goal>single</goal>
-			      </goals>
-			    </execution>
-			  </executions>
 			</plugin>
 		</plugins>
 	</build>

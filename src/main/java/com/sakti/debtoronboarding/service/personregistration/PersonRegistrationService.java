@@ -1,6 +1,6 @@
 package com.sakti.debtoronboarding.service.personregistration;
 
-import com.sakti.debtoronboarding.dto.ResponseDto;
+import com.sakti.infrastructure.dto.*;
 
 public interface PersonRegistrationService {
 

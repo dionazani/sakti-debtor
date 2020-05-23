@@ -3,7 +3,7 @@
   <name>sakti-debtor-onboarding</name>
   <comment>Debtor Onboarding In Spring Boot. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
   <projects>
-    <project>sakti-dao</project>
+    <project>sakti-infrastructure</project>
   </projects>
   <buildSpec>
     <buildCommand>
