@@ -11,7 +11,6 @@ public class PersonRegistrationDto {
 	private String email;
 	private String password;
 	private String userId;
-	private String createdUserId;
 	
 	//debtor_person
 	private String debtorId;
