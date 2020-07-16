@@ -60,6 +60,8 @@ public class PersonRegistrationController {
 		}
 		catch(Exception ex) {
 			
+			ex.printStackTrace();
+			
 			response = new ResponseDto();
 			response.setResponseCode("002");
 			response.setResponseMessage(ex.getMessage());

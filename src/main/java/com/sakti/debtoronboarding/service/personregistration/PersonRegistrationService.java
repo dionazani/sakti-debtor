@@ -40,15 +40,9 @@ public class PersonRegistrationService {
 	public ResponseDto addNew(PersonRegistrationDto personRegistrationDto) throws Exception {
 		
 		ResponseDto response = new ResponseDto();
-
-		// check is email is exists.
-		if (this.isEmailExisting(personRegistrationDto.getEmail())) {
-			response = new ResponseDto();
-			response.setResponseCode("101");
-			response.setResponseMessage("Email has been exist.");
-			response.setTimestamp(FormatUtils.getCurrentTimestamp());
-			response.setData(null);
-			
+		
+		response = this.debtorValidation(personRegistrationDto);
+		if (response != null) {
 			return response;
 		}
 		
@@ -82,7 +76,8 @@ public class PersonRegistrationService {
 		debtor.setEmail(personRegistrationDto.getEmail());
 		debtor.setAppUserId(appUserId);
 		debtor.setCreatedAt(FormatUtils.getCurrentTimestamp());
-		debtor.setCreatedUserId(appUserId);;
+		debtor.setCreatedUserId(appUserId);
+		debtor.setMobilePhone(personRegistrationDto.getMobilePhone());
 
 		this.debtorRepository.save(debtor);
 		
@@ -98,7 +93,6 @@ public class PersonRegistrationService {
 		debtorPerson.setPob(personRegistrationDto.getPob());
 		debtorPerson.setDob(personRegistrationDto.getDob());
 		debtorPerson.setMotherName(personRegistrationDto.getMotherName());
-		debtorPerson.setMobilePhone(personRegistrationDto.getMobilePhone());
 		debtorPerson.setLegalAddress1(personRegistrationDto.getLegalAddress1());
 		debtorPerson.setLegalAddress2(personRegistrationDto.getLegalAddress2());
 		debtorPerson.setLegalZipCodeId(personRegistrationDto.getLegalZipcodeId());
@@ -120,6 +114,7 @@ public class PersonRegistrationService {
 		map.put("userId", String.valueOf(appUserId));
 		map.put("debtorId", String.valueOf(debtorId));
 
+		response = new ResponseDto();
 		response.setResponseCode("000");
 		response.setResponseMessage("");
 		response.setTimestamp(FormatUtils.getCurrentTimestamp());
@@ -128,12 +123,77 @@ public class PersonRegistrationService {
 		return response;
 	}
 	
-	private boolean isEmailExisting(String email) {
+	private ResponseDto debtorValidation(PersonRegistrationDto personRegistrationDto) {
+		
+		ResponseDto response = null;
+
+		// check is mobile phone is exists.
+		if (this.isMobilePhoneExists(personRegistrationDto.getMobilePhone())) {
+			response = new ResponseDto();
+			response.setResponseCode("101");
+			response.setResponseMessage("Mobile Phone has been exist.");
+			response.setTimestamp(FormatUtils.getCurrentTimestamp());
+			response.setData(null);
+			
+			return response;
+		}
+				
+		// check is email is exists.
+		if (this.isEmailExists(personRegistrationDto.getEmail())) {
+			response = new ResponseDto();
+			response.setResponseCode("102");
+			response.setResponseMessage("Email has been exist.");
+			response.setTimestamp(FormatUtils.getCurrentTimestamp());
+			response.setData(null);
+			
+			return response;
+		}
+		
+		// check is identity number is exists.
+		if (this.isIdentityNumberExists(personRegistrationDto.getIdentityNumber())) {
+			response = new ResponseDto();
+			response.setResponseCode("103");
+			response.setResponseMessage("Identity Number (KTP/NIK) has been exist.");
+			response.setTimestamp(FormatUtils.getCurrentTimestamp());
+			response.setData(null);
+			
+			return response;
+		}
+		
+		return response;
+	}
+	
+	// check existing mobile phone
+	private boolean isMobilePhoneExists(String mobilePhone) {
+		
+		boolean isExist = true;
+		
+		Debtor debtorExisting = this.debtorRepository.findByMobilePhone(mobilePhone);
+		if (debtorExisting == null)
+			isExist = false;
+		
+		return isExist;
+	}
+
+	// check existing email.
+	private boolean isEmailExists(String email) {
 		
 		boolean isExist = true;
 		
 		Debtor debtorExisting = this.debtorRepository.findByEmail(email);
 		if (debtorExisting == null)
+			isExist = false;
+		
+		return isExist;
+	}
+	
+	// check existing identity number.
+	private boolean isIdentityNumberExists(String identityNumber) {
+		
+		boolean isExist = true;
+		
+		DebtorPerson debtorPersonExisting = this.debtorPersonRepository.findByIdentityNumber(identityNumber);
+		if (debtorPersonExisting == null)
 			isExist = false;
 		
 		return isExist;

@@ -2,13 +2,13 @@
 FROM adoptopenjdk/openjdk11
 
 # Refer to Maven build -> finalName
-ARG JAR_FILE=target/sakti-debtor-onboarding-jkt-jar-with-dependencies.jar
+ARG JAR_FILE=target/sakti-debtor-onboarding.jar
 
 # cd /opt/app
 WORKDIR /opt/app
 
-# cp target/ttf-lender.jar /opt/app/sakti-debtor-onboarding-jkt-jar-with-dependencies.jar
-COPY ${JAR_FILE} sakti-debtor-onboarding-jkt-jar-with-dependencies.jar
+# cp target/sakti-debtor-onboarding.jar /opt/app/sakti-debtor-onboarding.jar
+COPY ${JAR_FILE} sakti-debtor-onboarding.jar
 
 # java -jar /opt/app/app.jar
-ENTRYPOINT ["java","-jar","sakti-debtor-onboarding-jkt-jar-with-dependencies.jar"]
+ENTRYPOINT ["java","-jar","sakti-debtor-onboarding.jar"]

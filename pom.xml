@@ -11,7 +11,7 @@
 	<groupId>com.sakti.debtoronboarding</groupId>
 	<artifactId>sakti-debtor-onboarding</artifactId>
 	<version>1.0</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>sakti-debtor-onboarding</name>
 	<description>Debtor Onboarding In Spring Boot</description>
 
