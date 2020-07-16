@@ -41,15 +41,40 @@ public class PersonRegistrationService {
 		
 		ResponseDto response = new ResponseDto();
 		
-		response = this.debtorValidation(personRegistrationDto);
-		if (response != null) {
+		// check is mobile phone is exists.
+		if (this.isMobilePhoneExists(personRegistrationDto.getMobilePhone())) {
+			response.setResponseCode("101");
+			response.setResponseMessage("Mobile Phone has been exist.");
+			response.setTimestamp(FormatUtils.getCurrentTimestamp());
+
+			return response;
+		}
+				
+		// check is email is exists.
+		if (this.isEmailExists(personRegistrationDto.getEmail())) {
+			response.setResponseCode("102");
+			response.setResponseMessage("Email has been exist.");
+			response.setTimestamp(FormatUtils.getCurrentTimestamp());
+
+			return response;
+		}
+		
+		// check is identity number is exists.
+		if (this.isIdentityNumberExists(personRegistrationDto.getIdentityNumber())) {
+			response.setResponseCode("103");
+			response.setResponseMessage("Identity Number (KTP/NIK) has been exist.");
+			response.setTimestamp(FormatUtils.getCurrentTimestamp());
+
 			return response;
 		}
 		
 		// find DEBT from app_role.
 		AppRole appRole = this.roleRepository.findByCode(ROLE_DEBT);
 		if (appRole == null) {
+			response.setResponseCode("104");
 			response.setResponseMessage("Cannot find role DEBT");
+			response.setTimestamp(FormatUtils.getCurrentTimestamp());
+
 			return response;
 		}
 		
@@ -114,51 +139,10 @@ public class PersonRegistrationService {
 		map.put("userId", String.valueOf(appUserId));
 		map.put("debtorId", String.valueOf(debtorId));
 
-		response = new ResponseDto();
 		response.setResponseCode("000");
 		response.setResponseMessage("");
 		response.setTimestamp(FormatUtils.getCurrentTimestamp());
 		response.setData(map);
-		
-		return response;
-	}
-	
-	private ResponseDto debtorValidation(PersonRegistrationDto personRegistrationDto) {
-		
-		ResponseDto response = null;
-
-		// check is mobile phone is exists.
-		if (this.isMobilePhoneExists(personRegistrationDto.getMobilePhone())) {
-			response = new ResponseDto();
-			response.setResponseCode("101");
-			response.setResponseMessage("Mobile Phone has been exist.");
-			response.setTimestamp(FormatUtils.getCurrentTimestamp());
-			response.setData(null);
-			
-			return response;
-		}
-				
-		// check is email is exists.
-		if (this.isEmailExists(personRegistrationDto.getEmail())) {
-			response = new ResponseDto();
-			response.setResponseCode("102");
-			response.setResponseMessage("Email has been exist.");
-			response.setTimestamp(FormatUtils.getCurrentTimestamp());
-			response.setData(null);
-			
-			return response;
-		}
-		
-		// check is identity number is exists.
-		if (this.isIdentityNumberExists(personRegistrationDto.getIdentityNumber())) {
-			response = new ResponseDto();
-			response.setResponseCode("103");
-			response.setResponseMessage("Identity Number (KTP/NIK) has been exist.");
-			response.setTimestamp(FormatUtils.getCurrentTimestamp());
-			response.setData(null);
-			
-			return response;
-		}
 		
 		return response;
 	}
