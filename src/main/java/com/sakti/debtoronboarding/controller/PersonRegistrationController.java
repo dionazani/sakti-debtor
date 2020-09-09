@@ -49,30 +49,25 @@ public class PersonRegistrationController {
 												@RequestBody PersonRegistrationDto personRegistrationDto) {
 		
 		ResponseDto response = null;
+		ResponseEntity responseEntity = null;
 		try {
 			if (version.toLowerCase().equals("v1"))
 				response = this.personRegistrationService.addNew(personRegistrationDto);
 
-			return ResponseEntity
-	                .status(HttpStatus.OK)
+			responseEntity =  ResponseEntity
+	                .status(response.getHttpStatusCode())
 	                .contentType(MediaType.APPLICATION_JSON)
 	                .body(response);
 		}
 		catch(Exception ex) {
 			
-			ex.printStackTrace();
-			
-			response = new ResponseDto();
-			response.setResponseCode("002");
-			response.setResponseMessage(ex.getMessage());
-			response.setTimestamp(FormatUtils.getCurrentTimestamp());
-			response.setData(null);
-			
-			return ResponseEntity
+			responseEntity =  ResponseEntity
 	                .status(HttpStatus.INTERNAL_SERVER_ERROR)
 	                .contentType(MediaType.APPLICATION_JSON)
-	                .body(response);
+	                .body(ex.getMessage());
 		}
+		
+		return responseEntity;
 		
 	}
 }

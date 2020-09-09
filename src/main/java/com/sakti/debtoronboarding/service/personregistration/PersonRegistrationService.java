@@ -13,7 +13,7 @@ import com.sakti.infrastructure.entity.DebtorPerson;
 import com.sakti.infrastructure.repository.DebtorPersonRepository;
 import com.sakti.infrastructure.repository.DebtorRepository;
 import com.sakti.infrastructure.repository.RoleRepository;
-import com.sakti.infrastructure.repository.UserRepository;
+import com.sakti.infrastructure.repository.AppUserRepository;
 import com.sakti.infrastructure.utils.*;
 
 @Service
@@ -24,7 +24,7 @@ public class PersonRegistrationService {
 	private RoleRepository roleRepository;
 	
 	@Autowired
-	private UserRepository userRepository;
+	private AppUserRepository userRepository;
 	
 	@Autowired
 	private DebtorRepository debtorRepository;
@@ -49,8 +49,7 @@ public class PersonRegistrationService {
 		// find DEBT from app_role.
 		AppRole appRole = this.roleRepository.findByCode(ROLE_DEBT);
 		if (appRole == null) {
-			response.setResponseMessage("Cannot find role DEBT");
-			return response;
+			throw new Exception("Cannot find role DEBT");
 		}
 		
 		long appRoleId = appRole.getId();
@@ -115,6 +114,7 @@ public class PersonRegistrationService {
 		map.put("debtorId", String.valueOf(debtorId));
 
 		response = new ResponseDto();
+		response.setHttpStatusCode(200);
 		response.setResponseCode("000");
 		response.setResponseMessage("");
 		response.setTimestamp(FormatUtils.getCurrentTimestamp());
@@ -130,6 +130,7 @@ public class PersonRegistrationService {
 		// check is mobile phone is exists.
 		if (this.isMobilePhoneExists(personRegistrationDto.getMobilePhone())) {
 			response = new ResponseDto();
+			response.setHttpStatusCode(400);
 			response.setResponseCode("101");
 			response.setResponseMessage("Mobile Phone has been exist.");
 			response.setTimestamp(FormatUtils.getCurrentTimestamp());
@@ -141,6 +142,7 @@ public class PersonRegistrationService {
 		// check is email is exists.
 		if (this.isEmailExists(personRegistrationDto.getEmail())) {
 			response = new ResponseDto();
+			response.setHttpStatusCode(400);
 			response.setResponseCode("102");
 			response.setResponseMessage("Email has been exist.");
 			response.setTimestamp(FormatUtils.getCurrentTimestamp());
@@ -152,6 +154,7 @@ public class PersonRegistrationService {
 		// check is identity number is exists.
 		if (this.isIdentityNumberExists(personRegistrationDto.getIdentityNumber())) {
 			response = new ResponseDto();
+			response.setHttpStatusCode(400);
 			response.setResponseCode("103");
 			response.setResponseMessage("Identity Number (KTP/NIK) has been exist.");
 			response.setTimestamp(FormatUtils.getCurrentTimestamp());
