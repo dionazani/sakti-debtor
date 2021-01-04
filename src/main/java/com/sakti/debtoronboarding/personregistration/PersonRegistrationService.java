@@ -1,4 +1,4 @@
-package com.sakti.debtoronboarding.service.personregistration;
+package com.sakti.debtoronboarding.personregistration;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +17,6 @@ import com.sakti.infrastructure.repository.AppUserRepository;
 import com.sakti.infrastructure.utils.*;
 
 @Service
-@Transactional
 public class PersonRegistrationService {
 
 	@Autowired

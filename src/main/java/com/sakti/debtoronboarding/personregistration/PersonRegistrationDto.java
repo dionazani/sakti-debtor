@@ -1,4 +1,4 @@
-package com.sakti.debtoronboarding.service.personregistration;
+package com.sakti.debtoronboarding.personregistration;
 
 import java.util.Date;
 import lombok.Data;

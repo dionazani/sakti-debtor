@@ -1,50 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                    
-    
-    
-    
-    <wb-module deploy-name="sakti-debtor-onboarding">
                                         
+    
+    
+    
+    
+    
+    
+    
+    
+    <wb-module deploy-name="03-sakti-debtor-onboarding">
+                                                                                
+        
+        
+        
+        
+        
         
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-                                        
+                                                                                
+        
+        
+        
+        
+        
         
         
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-                                        
+                                                                                
+        
+        
+        
+        
+        
         
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-                                        
+                                                                                
+        
+        
+        
+        
+        
         
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                                
+                                                                        
+        
+        
+        
+        
+        
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
+                                                
+        
+        
+        
+        
         <dependent-module archiveName="sakti-infrastructure-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sakti-infrastructure/sakti-infrastructure">
+                                                                        
+            
+            
+            
+            
             <dependency-type>uses</dependency-type>
+                                                                    
+        
+        
+        
+        
         </dependent-module>
-                                        
+                                                                                
         
         
         
-        <property name="java-output-path" value="/sakti-debtor-onboarding/target/classes"/>
+        
+        
+        
+        
+        
+        <property name="java-output-path" value="/03-sakti-debtor-onboarding/target/classes"/>
                         
         
-        <property name="context-root" value="sakti-debtor-onboarding"/>
-                                    
+        <property name="context-root" value="03-sakti-debtor-onboarding"/>
+                                                                            
+    
+    
+    
+    
+    
     
     
     
     </wb-module>
-                
+                                    
+
+
+
+
+
 
 
 
