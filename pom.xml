@@ -99,21 +99,6 @@
 		  <version>${swagger.version}</version>
 		</dependency>
 		<dependency>
-		  <groupId>io.springfox</groupId>
-		  <artifactId>springfox-swagger-ui</artifactId>
-		  <version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-		  <groupId>io.swagger</groupId>
-		  <artifactId>swagger-annotations</artifactId>
-		  <version>${swagger-annotations.version}</version>
-		</dependency>
-		<dependency>
-		  <groupId>io.swagger</groupId>
-		  <artifactId>swagger-models</artifactId>
-		  <version>${swagger-models.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>com.sakti.infrastructure</groupId>
 			<artifactId>sakti-infrastructure</artifactId>
 			<version>1.0</version>

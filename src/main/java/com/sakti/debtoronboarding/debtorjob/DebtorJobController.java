@@ -14,7 +14,7 @@ import com.sakti.infrastructure.dto.ResponseDto;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/v1/debtor-job")
+@RequestMapping("debtor-job")
 public class DebtorJobController {
 
 	@Autowired
