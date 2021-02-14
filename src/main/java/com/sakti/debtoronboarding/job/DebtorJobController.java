@@ -1,4 +1,4 @@
-package com.sakti.debtoronboarding.personregistration;
+package com.sakti.debtoronboarding.job;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,23 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sakti.infrastructure.dto.ResponseDto;
-import com.sakti.infrastructure.utils.FormatUtils;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping(value="person-registration")
-public class PersonRegistrationController {
+@RequestMapping("job")
+public class DebtorJobController {
 
 	@Autowired
-	private PersonRegistrationService personRegistrationService;
+	private DebtorJobService debtorJobService;
 	
 	@PostMapping("")
-	public ResponseEntity<Object> addNew(@RequestBody PersonRegistrationDto personRegistrationDto) {
+	public ResponseEntity<Object> addNew(@RequestBody DebtorJobDto dto) {
 		
 		ResponseDto response = null;
 		ResponseEntity responseEntity = null;
 		try {
-			response = this.personRegistrationService.addNew(personRegistrationDto);
+			response = this.debtorJobService.addNew(dto);
 			responseEntity =  ResponseEntity
 	                .status(response.getHttpStatusCode())
 	                .contentType(MediaType.APPLICATION_JSON)
@@ -35,6 +33,7 @@ public class PersonRegistrationController {
 		}
 		catch(Exception ex) {
 			
+			ex.printStackTrace();
 			responseEntity =  ResponseEntity
 	                .status(HttpStatus.INTERNAL_SERVER_ERROR)
 	                .contentType(MediaType.APPLICATION_JSON)

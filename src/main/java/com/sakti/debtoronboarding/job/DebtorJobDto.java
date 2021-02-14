@@ -1,4 +1,4 @@
-package com.sakti.debtoronboarding.debtorjob;
+package com.sakti.debtoronboarding.job;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ public class DebtorJobDto {
 	private String corporateName;
 	private String address1;
 	private String address2;
-	private Integer zipcodeId;
+	private Integer villageId;
 	private String rt;
 	private String rw;
 	private String areaPhone;

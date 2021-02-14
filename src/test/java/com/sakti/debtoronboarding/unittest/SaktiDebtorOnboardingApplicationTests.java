@@ -5,7 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootTest
-@ComponentScan(basePackages = {"com.sakti.dao", "com.sakti.debtoronboarding"})
+@ComponentScan(basePackages = {"com.sakti.infrastructure", "com.sakti.debtoronboarding"})
 public class SaktiDebtorOnboardingApplicationTests {
 
 	@Test

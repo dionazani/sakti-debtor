@@ -1,4 +1,4 @@
-package com.sakti.debtoronboarding.personregistration;
+package com.sakti.debtoronboarding.registration;
 
 import java.util.Date;
 import lombok.Data;
@@ -27,7 +27,7 @@ public class PersonRegistrationDto {
 	private String legalAddress1;
 	private String legalAddress2;
 	private String legalAreaPhone;
-	private long legalZipcodeId;
+	private long legalVillageId;
 	private String legalPhone;
 	private String mobilePhone;
 	private String motherName;
@@ -35,5 +35,9 @@ public class PersonRegistrationDto {
 	private String npwpNumber;
 	private String phone;
 	private String pob;
-	private long zipcodeId;
+	private int villageId;
+	private int jobRoleId;
+	private String legalRtRw;
+	private String rtRw;
+	
 }

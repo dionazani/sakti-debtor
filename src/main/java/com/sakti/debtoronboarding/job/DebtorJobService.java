@@ -1,4 +1,4 @@
-package com.sakti.debtoronboarding.debtorjob;
+package com.sakti.debtoronboarding.job;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +29,7 @@ public class DebtorJobService {
 		entity.setCorporateName(dto.getCorporateName());
 		entity.setAddress1(dto.getAddress1());
 		entity.setAddress2(dto.getAddress2());
-		entity.setZipcodeId(dto.getZipcodeId());
+		entity.setVillageId(dto.getVillageId());
 		entity.setRt(dto.getRt());
 		entity.setRw(dto.getRw());
 		entity.setAreaPhone(dto.getAreaPhone());

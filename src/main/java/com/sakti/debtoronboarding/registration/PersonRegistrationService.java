@@ -1,4 +1,4 @@
-package com.sakti.debtoronboarding.personregistration;
+package com.sakti.debtoronboarding.registration;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -93,18 +93,20 @@ public class PersonRegistrationService {
 		debtorPerson.setMotherName(personRegistrationDto.getMotherName());
 		debtorPerson.setLegalAddress1(personRegistrationDto.getLegalAddress1());
 		debtorPerson.setLegalAddress2(personRegistrationDto.getLegalAddress2());
-		debtorPerson.setLegalZipCodeId(personRegistrationDto.getLegalZipcodeId());
+		debtorPerson.setLegalVillageId(personRegistrationDto.getLegalVillageId());
 		debtorPerson.setLegalAreaPhone(personRegistrationDto.getLegalAreaPhone());
 		debtorPerson.setLegalPhone(personRegistrationDto.getLegalPhone());
 		debtorPerson.setIsResSameLegal(personRegistrationDto.getIsResSameLegal());
 		debtorPerson.setAddress1(personRegistrationDto.getAddress1());
 		debtorPerson.setAddress2(personRegistrationDto.getAddress2());
-		debtorPerson.setZipCodeId(personRegistrationDto.getZipcodeId());
+		debtorPerson.setVillageId(personRegistrationDto.getVillageId());
 		debtorPerson.setAreaPhone(personRegistrationDto.getLegalAreaPhone());
 		debtorPerson.setPhone(personRegistrationDto.getLegalPhone());
 		debtorPerson.setNpwpNumber(personRegistrationDto.getNpwpNumber());
 		debtorPerson.setNpwpImage(personRegistrationDto.getNpwpImage());
 		debtorPerson.setIdentityImage(personRegistrationDto.getIdentityImage());
+		debtorPerson.setJobRoleId(personRegistrationDto.getJobRoleId());
+		
 		this.debtorPersonRepository.save(debtorPerson);
 		
 		// set Response.
