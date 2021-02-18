@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sakti.infrastructure.dto.ResponseDto;
 
 @RestController
-@RequestMapping("job")
+@RequestMapping(value="${context-path}/job")
 public class DebtorJobController {
 
 	@Autowired

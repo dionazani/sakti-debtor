@@ -14,7 +14,7 @@ import com.sakti.infrastructure.dto.ResponseDto;
 import com.sakti.infrastructure.utils.FormatUtils;
 
 @RestController
-@RequestMapping(value="registration")
+@RequestMapping(value="${context-path}/registration")
 public class PersonRegistrationController {
 
 	@Autowired
