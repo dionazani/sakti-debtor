@@ -3,6 +3,7 @@ package com.sakti.debtoronboarding.registration;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.sakti.infrastructure.dto.*;
@@ -15,6 +16,7 @@ import com.sakti.infrastructure.repository.DebtorRepository;
 import com.sakti.infrastructure.repository.RoleRepository;
 import com.sakti.infrastructure.repository.AppUserRepository;
 import com.sakti.infrastructure.utils.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
 public class PersonRegistrationService {
@@ -54,11 +56,14 @@ public class PersonRegistrationService {
 		long appRoleId = appRole.getId();
 
 		// insert into app_user.
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(personRegistrationDto.getPassword());
+		
 		AppUser user = new AppUser();
 		user.setAppRoleId(appRoleId);
 		user.setUserType(USER_TYPE_USER);
 		user.setUsername(personRegistrationDto.getEmail());
-		user.setPassword(personRegistrationDto.getPassword());
+		user.setPassword(hashedPassword);
 		user.setMustChangePassword(Short.valueOf("1"));
 		user.setIsLock(Short.valueOf("1"));
 		user.setCreatedAt(FormatUtils.getCurrentTimestamp());
